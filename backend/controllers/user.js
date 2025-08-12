@@ -81,7 +81,7 @@ const logout = TryCatch(async (req, res) => {
   res.clearCookie("Ecommerce", {
     httpOnly: true,
     sameSite: "none",
-    secure: process.env.NODE_ENV === "production",
+  secure: true,
     path: "/",
   });
   res.json({ success: true, message: "Logged out successfully" });
