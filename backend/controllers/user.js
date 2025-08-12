@@ -81,6 +81,7 @@ const logout = TryCatch(async (req, res) => {
   maxAge: 0,
   sameSite: "none",
   httpOnly: true,
+  path: "/",           
   secure: true,
 }).json({
       success: true,
