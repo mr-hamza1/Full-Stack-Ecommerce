@@ -81,7 +81,7 @@ const logout = TryCatch(async (req, res) => {
   maxAge: 0,
   sameSite: "none",
   httpOnly: true,
-  secure: true,
+  secure: process.env.NODE_ENV === "production",
   expires: new Date(0),
   domain: "full-stack-ecommerce-alpha.vercel.app", // <-- must match cookie set during login
 }).json({
