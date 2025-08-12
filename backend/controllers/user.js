@@ -67,7 +67,7 @@ const login = TryCatch(async (req, res, next) => {
   //   to: user.email,
   //   subject: "Login Notification",
   //   text: `Hi ${user.name},\n\nYou have successfully logged in to your Lootlo account.\n\nIf this wasn't you, please secure your account immediately.`,
-  // });
+  // })
 
   sendToken(res, user, 200, `Welcome Back ${user.name}`);
 });
