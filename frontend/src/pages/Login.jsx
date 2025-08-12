@@ -140,7 +140,6 @@ function Login() {
                 alignItems: "center",
                 height: "100vh",
                 justifyContent: "center",
-                bgcolor:"#f7fafc",
 
             }}
         >

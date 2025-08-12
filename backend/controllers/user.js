@@ -83,7 +83,7 @@ const logout = TryCatch(async (req, res) => {
   httpOnly: true,
   secure: true,
   expires: new Date(0),
-  domain: "vercel.app", // <-- must match cookie set during login
+  domain: "full-stack-ecommerce-alpha.vercel.app", // <-- must match cookie set during login
 }).json({
       success: true,
       message: "Logout successfully!",
