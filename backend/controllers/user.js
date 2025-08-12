@@ -78,6 +78,8 @@ const logout = TryCatch(async (req, res) => {
 
   res.clearCookie("Ecommerce", {
     ...cookieOptions, 
+    domain: "full-stack-ecommerce-alpha.vercel.app",
+
   });
 
   return res.json({
