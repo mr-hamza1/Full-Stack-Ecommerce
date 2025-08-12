@@ -139,7 +139,9 @@ function Login() {
                 display: "flex",
                 alignItems: "center",
                 height: "100vh",
-                justifyContent: "center"
+                justifyContent: "center",
+                bgcolor:"#f7fafc",
+
             }}
         >
             <Mui.Paper
