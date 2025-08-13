@@ -6,13 +6,14 @@ import { Product } from "../models/product.js";
 import { myCache } from "../app.js";
 import { ErrorHandler } from "./errorHandler.js";
 
-
 const cookieOptions = {
-    maxAge: 15 * 24 * 60 * 60 * 1000,
-    sameSite: "none",
-    httpOnly: true,
-    secure: true
+  maxAge: 15 * 24 * 60 * 60 * 1000,
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
 };
+
+
 
 const connectDB = (uri)=>{
     mongoose.connect(uri,{dbName: "E-commerce"})
