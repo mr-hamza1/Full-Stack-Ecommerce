@@ -29,7 +29,6 @@ const newUser = TryCatch(async(req, res, next)=>{
 
      user = await User.create({ name, email, photo, gender, dob, password })
      
-     console.log(user)
 
   //     await sendEmail({
   //   to: user.email,
@@ -75,7 +74,7 @@ const login = TryCatch(async (req, res, next) => {
 
 const logout = TryCatch(async (req, res) => {
 
-  return res.status(200).clearCookie("Ecommerce",cookieOptions).json(
+  return res.status(200).clearCookie("Ecommerce", null , cookieOptions).json(
     {
       success: true,
       message: "logout successfully!"
