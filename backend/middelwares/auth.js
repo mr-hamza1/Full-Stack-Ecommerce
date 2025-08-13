@@ -25,7 +25,7 @@ const adminOnly = TryCatch(async(req, res, next)=>{
 
 const isAuthanticated = (req,res,next) => {
     
-    const token = req.cookies["Ecommerce"];
+    const token = req.cookies["token"];
 
     if (!token) {
         return next(new ErrorHandler("please login to access this page",401))

@@ -62,7 +62,7 @@ function Login() {
                 toast.error(message);
             }
         } catch (error) {
-            toast.error("Sign in Failed");
+            toast.error(error);
             console.log(error);
         }
     };
