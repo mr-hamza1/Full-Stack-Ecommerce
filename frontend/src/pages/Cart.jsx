@@ -70,6 +70,7 @@ const Cart = () => {
   useEffect(() => {
     if (data1?.cart) {
       setProducts(data1.cart)
+      refetch()
     }
   }, [data1,refetch])
 
