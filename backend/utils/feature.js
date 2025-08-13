@@ -11,6 +11,7 @@ const cookieOptions = {
   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
+  domain: process.env.COOKIE_DOMAIN,
 };
 
 
