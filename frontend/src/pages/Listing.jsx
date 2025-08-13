@@ -64,6 +64,7 @@ import { useLocation, useParams } from "react-router-dom"
 import Recommended from "../modules/Home/Recommended"
 import { mobileCategoriesHome, mobileSearchWord } from "../redux/reducer/cartReducer"
 import Loader from "../layout/Loader"
+import NoProductFound from "../modules/Empty"
 
 
 
@@ -78,14 +79,13 @@ const [selectedCategory, setSelectedCategory] = useState("");
 const [selectedFeatured, setSelectedFeatured] = useState([]);
 const [mobileSearching, setMobileSearching] = useState("");
 
-const {mobileSearch} = useSelector((state)=> state.cartReducer)
 
     const { search } = useLocation();
   const params = new URLSearchParams(search);
 
  
   const keyWord = params.get("keyword") || "";
-  const category = params.get("category") || "all";
+  const category = params.get("category") || "all" ;
 
   const [searchCategory, setSearchCategory] = useState(category)
   const [searchWord, setSearchWord] = useState(keyWord)
@@ -101,9 +101,9 @@ useEffect(()=>{
       setSearchWord(keyWord)
       setSearchCategory(category)
     }
-    else{
-          setSearchCategory(category)
-    }
+    // else{
+    //       setSearchCategory(category)
+    // }
   
 
 },[selectedCategory,keyWord, category])
@@ -172,11 +172,11 @@ useEffect(() => {
       setBrands(filteredBrands);
     } 
     // Otherwise, no brands
-    else {
+    if(selectedCategory) {
       setBrands(data1.categories.brands);
     }
   }
-}, [data1, category]);
+}, [data1, category, selectedCategory]);
 
 
 
@@ -663,9 +663,10 @@ onClick={handleListClick}
             
           
         </Box>
-      {    isLoading? "loader" : 
+      {    isLoading? "loader" : paginatedProducts.length > 0? 
              <ProductCard viewMode={viewMode} products={paginatedProducts} favorites={favorites} toggleFavorite={toggleFavorite} />
-         } </Stack>
+         : <NoProductFound />
+            } </Stack>
         </Stack>
             {/* ✅ Pagination */}
             <Stack width={"100%"} direction={"row"}  pt={4} pb={5}>

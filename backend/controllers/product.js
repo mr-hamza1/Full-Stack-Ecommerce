@@ -469,9 +469,9 @@ const searchAllProduct = TryCatch(async (req, res, next) => {
 
   if (!minPrice || minPrice === "undefined") minPrice = 0;
 
-  const page = Number(req.query.page) || 1;
-  const limit = Number(process.env.LIMIT) || 12;
-  const skip = (page - 1) * limit;
+  // const page = Number(req.query.page) || 1;
+  // const limit = Number(process.env.LIMIT) || 12;
+  // const skip = (page - 1) * limit;
 
   const baseQuery = {};
 
@@ -511,19 +511,17 @@ const searchAllProduct = TryCatch(async (req, res, next) => {
   // Fetch data
   const [products, totalCount, recommended] = await Promise.all([
     Product.find(baseQuery)
-      .sort(sort ? { "pricing.amount": sort === "asc" ? 1 : -1 } : {})
-      .limit(limit)
-      .skip(skip),
+      .sort(sort ? { "pricing.amount": sort === "asc" ? 1 : -1 } : {}),    
     Product.countDocuments(baseQuery),
     Product.aggregate([{ $sample: { size: 4 } }]),
 ]);
 
-  const totalPages = Math.ceil(totalCount / limit);
+  // const totalPages = Math.ceil(totalCount / limit);
 
   return res.status(200).json({
     success: true,
     products,
-    totalPages,
+    // totalPages,
     recommended,
   });
 });
