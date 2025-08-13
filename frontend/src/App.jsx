@@ -61,7 +61,7 @@ const MainLayout = ({user}) => {
   return (
     <>
       {!shouldHideLayout && <Header />}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader variant='product'/>}>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />

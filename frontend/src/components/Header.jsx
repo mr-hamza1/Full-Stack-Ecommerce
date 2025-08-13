@@ -513,7 +513,7 @@ const Header = () => {
             )}
 
             {/* Orders */}
-            <MenuItem component={Link} to="/orders" onClick={handleClose}>
+            <MenuItem component={Link} to="/" onClick={handleClose}>
               <ShoppingBag sx={{ mr: 2 }} />
               Orders
             </MenuItem>

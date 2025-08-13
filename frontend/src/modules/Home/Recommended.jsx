@@ -2,6 +2,7 @@
 
 import { Box, Card, CardContent, CardMedia, Stack, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import Loader from "../../layout/Loader";
 
 const Recommended = ({recommendedData, isLoading}) => {
      const navigate = useNavigate();
@@ -47,7 +48,7 @@ const Recommended = ({recommendedData, isLoading}) => {
           gap: 2,
         }}
       >
-        {isLoading? "loading" : recommendedData?.map((product) => (
+        {isLoading? <Loader  variant="product"/> : recommendedData?.map((product) => (
           <Card
             key={product._id}
             sx={{

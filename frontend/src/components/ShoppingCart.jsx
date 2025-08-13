@@ -20,6 +20,7 @@ import { useDeleteCartItemMutation } from "../redux/api/productApi"
 import { useSelector } from "react-redux"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import Loader from "../layout/Loader"
 
 
 
@@ -78,7 +79,7 @@ export default function ShoppingCart({products, isLoading, refetch}) {
         overflowY: "auto",}} >
         <Stack spacing={2} bgcolor={"white"} width={"100%"} sx={{
            }} >
-            {isLoading? "laoding" : products.length<= 0? 
+            {isLoading?  <Loader  variant="cart"/> : products.length<= 0? 
            < Typography textAlign={"center"} fontWeight={"bold"} fontSize={"20px"} mb={20}>
             No Product in cart
            </Typography>

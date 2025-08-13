@@ -63,6 +63,7 @@ import { useDebounce } from "../modules/Debouncing"
 import { useLocation, useParams } from "react-router-dom"
 import Recommended from "../modules/Home/Recommended"
 import { mobileCategoriesHome, mobileSearchWord } from "../redux/reducer/cartReducer"
+import Loader from "../layout/Loader"
 
 
 
@@ -391,7 +392,7 @@ onClick={handleListClick}
 
       {/* Product List */}
       <Stack spacing={0}>
-{    isLoading? "loader" : 
+{    isLoading? <Loader variant="product" /> : 
              <ProductCard viewMode={viewMode} products={paginatedProducts} favorites={favorites} toggleFavorite={toggleFavorite} />
          }    
            </Stack>

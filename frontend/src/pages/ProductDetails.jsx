@@ -111,7 +111,7 @@ const Product = () => {
 
 
   return (
-    isLoading? <Loader/> :
+    isLoading? <Loader /> :
         <Box sx={{ backgroundColor: "#f7fafc",width:"100%", height: "100%", display: "flex" }}
         mt={{xs: 7, md: "none"}}
         overflow={"hidden"}

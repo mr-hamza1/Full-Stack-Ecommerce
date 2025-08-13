@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux"
 import {userNotExist} from '../redux/reducer/userReducer'
 import toast from "react-hot-toast"
 import axios from "axios"
+import Loader from "../layout/Loader"
 
 
 
@@ -381,7 +382,7 @@ const Home = () => {
              </Stack>
              </Stack>
              <Stack direction={"row"} width={"75%"} >
-               {isLoading?  "hi": 
+               {isLoading?  <Loader variant="product"/>: 
                dealsData.map((item, index) => (
                   <Box textAlign={"center"} gap={2} borderLeft={"2px solid #e0e0e0"} width={"25%"} pt={2} pb={2}
                   sx={{           "&:hover": {
@@ -476,7 +477,7 @@ const Home = () => {
 
                  <Stack width={"75%"}>
                   <Stack direction={"row"} width={"100%"} >
-                    {isLoading?  "hi": 
+                    {isLoading?  <Loader variant="product"/>: 
                     homeOutdoorData.map((item, index) => (
           index<4 &&
                   <Box width={"25%"} borderLeft={"2px solid #e0e0e0"}  borderBottom={"2px solid #e0e0e0"}
@@ -516,7 +517,7 @@ const Home = () => {
               ))}
                   </Stack>
                                    <Stack direction={"row"} width={"100%"} >
-                    {isLoading?  "hi": homeOutdoorData.map((item, index) => (
+                    {isLoading?  <Loader variant="product"/>: homeOutdoorData.map((item, index) => (
           index>=4 && 
                   <Box width={"25%"} borderLeft={"2px solid #e0e0e0"} sx={{                    "&:hover": {
       transform: "translateY(5px)",
@@ -602,7 +603,7 @@ const Home = () => {
 
                  <Stack width={"75%"}>
                   <Stack direction={"row"} width={"100%"} >
-                    {isLoading?  "hi": electronicsData.map((item, index) => (
+                    {isLoading?  <Loader variant="product"/>: electronicsData.map((item, index) => (
           index<4 &&
                   <Box width={"25%"} borderLeft={"2px solid #e0e0e0"}  borderBottom={"2px solid #e0e0e0"}
                   sx={{                    "&:hover": {
@@ -640,7 +641,7 @@ const Home = () => {
               ))}
                   </Stack>
                                    <Stack direction={"row"} width={"100%"} >
-                    {isLoading?  "hi": electronicsData.map((item, index) => (
+                    {isLoading?  <Loader variant="product"/>: electronicsData.map((item, index) => (
           index>=4 && 
                   <Box width={"25%"} borderLeft={"2px solid #e0e0e0"} sx={{
                    "&:hover": {

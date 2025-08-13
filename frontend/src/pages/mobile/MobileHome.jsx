@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { mobileSearchWord } from "../../redux/reducer/cartReducer";
 import { useCategoriesQuery } from "../../redux/api/productApi";
 import { useErrors } from "../../Hooks/Hook";
+import Loader from "../../layout/Loader";
 
 
 
@@ -204,7 +205,7 @@ useEffect(() => {
 
         <Stack direction="row"  sx={{ overflowX: "auto", pb: 1 }} width={"100%"}>
              <Stack direction={"row"} width={"100%"} >
-               {isLoading?  "ho" : dealsData.map((item, index) => (
+                                   {isLoading?  <Loader variant="product"/>: dealsData.map((item, index) => (
                   <Box textAlign={"center"} gap={2} border={"1px solid #e0e0e0"} width={"100%"} p={3}
                   sx={{           "&:hover": {
       transform: "translateY(-5px)",
@@ -261,7 +262,7 @@ useEffect(() => {
 
         <Stack direction="row"  sx={{ overflowX: "auto", pb: 1 }} width={"100%"}>
              <Stack direction={"row"} width={"100%"} >
-               {electronicsData.map((item, index) => (
+                                   {isLoading?  <Loader variant="product"/>:electronicsData.map((item, index) => (
                   <Box textAlign={"center"} gap={2} border={"1px solid #e0e0e0"} width={"100%"} p={3}
                   sx={{           "&:hover": {
       transform: "translateY(-5px)",
@@ -326,7 +327,7 @@ useEffect(() => {
 
         <Stack direction="row"  sx={{ overflowX: "auto", pb: 1 }} width={"100%"}>
              <Stack direction={"row"} width={"100%"} >
-               {homeOutdoorData.map((item, index) => (
+                                   {isLoading?  <Loader variant="product"/>: homeOutdoorData.map((item, index) => (
                   <Box textAlign={"center"} gap={2} border={"1px solid #e0e0e0"} width={"100%"} p={3}
                   sx={{           "&:hover": {
       transform: "translateY(-5px)",

@@ -9,6 +9,7 @@ import { useErrors } from "../Hooks/Hook"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import toast from "react-hot-toast"
+import Loader from "../layout/Loader"
 
 
 const Cart = () => {
@@ -100,7 +101,7 @@ const Cart = () => {
             </Typography>
 
             <Stack direction={{ xs: "column", sm: "column", md: "row" }} alignItems="center" spacing={2} width="100%">
-              {isLoading1? "loading" : data1?.realted.map((p, index) => (
+              {isLoading1? <Loader variant="product"/> : data1?.realted.map((p, index) => (
                 <Stack
                   key={index}
                   alignItems="center"
@@ -132,7 +133,7 @@ const Cart = () => {
                       src={`${p.images.urls[0]}`}
                       alt={p.name}
                       sx={{
-                        width: { xs: 250, sm: 130, md: 200 },
+                        width: { xs: 250, sm: 130, md: 160 },
                         height: { xs: 200, sm: 150, md: 160 },
                         objectFit: "cover",
                         borderRadius: "4px",
