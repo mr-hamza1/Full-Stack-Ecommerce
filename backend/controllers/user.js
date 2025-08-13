@@ -10,7 +10,7 @@ const newUser = TryCatch(async(req, res, next)=>{
 
     const { name , email, photo, gender, password, dob} = req.body
 
-    console.log(password)
+    
 
     
   let user = await User.findOne({ email }).select("+password")
