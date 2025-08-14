@@ -18,16 +18,20 @@ const newUser = TryCatch(async(req, res, next)=>{
     if(user){
     const isMatch = await compare(password, user.password)
  
-    if (user && isMatch){
+    if (user && isMatch && user.login === false){
+        user.login = true;
+        await user.save()
          return  sendToken(res, user, 201, `Welcome Back ${user.name}`);
         }
     }  
 
       if (!name || !email || !gender || !password)
         return next(new ErrorHandler("Please add all fields", 400));
+      
+      const login = true
+      
 
-
-     user = await User.create({ name, email, photo, gender, dob, password })
+     user = await User.create({ name, email, photo, gender, dob, password, login })
      
 
   //     await sendEmail({
@@ -62,6 +66,12 @@ const login = TryCatch(async (req, res, next) => {
     return  next(new ErrorHandler("Invalid  password",404))
   }
 
+  if (user.login === false) { 
+      user.login = true;
+        await user.save()  }
+
+
+
   //  await sendEmail({
   //   to: user.email,
   //   subject: "Login Notification",
@@ -72,7 +82,18 @@ const login = TryCatch(async (req, res, next) => {
 });
 
 
-const logout = TryCatch(async (req, res) => {
+const logout = TryCatch(async (req, res, next) => {
+
+    let user = await User.findById(req.user)
+    
+     if (!user) {
+    return next(new ErrorHandler("You are not SignUp", 404));
+  }
+
+    if (user.login === true) { 
+      user.login = false;
+        await user.save()  
+      }
 
   return res.status(200).clearCookie("token",{...cookieOptions, maxAge: 0}).json(
     {

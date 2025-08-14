@@ -6,7 +6,7 @@ const app = express.Router();
 
 app.post("/login", middle, login)
 
-app.get("/logout", logout)
+app.get("/logout",isAuthanticated, logout)
 
 app.post("/new", newUser)
 

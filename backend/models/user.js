@@ -38,6 +38,11 @@ const schema = new Schema({
         default: "not",
         select: false,
     }, 
+    login:{
+        type: Boolean,
+        required : [true, "Please Login"],
+        default: false,
+    }, 
 
 },
 {

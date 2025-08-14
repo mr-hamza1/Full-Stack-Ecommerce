@@ -23,7 +23,7 @@ const adminOnly = TryCatch(async(req, res, next)=>{
     next()
 })
 
-const isAuthanticated = (req,res,next) => {
+const isAuthanticated = async(req,res,next) => {
     
     const token = req.cookies["token"];
 
@@ -34,6 +34,17 @@ const isAuthanticated = (req,res,next) => {
     const decodedData = jwt.verify(token, process.env.JWT_SECRET)
        
     req.user = decodedData._id
+
+     let user = await User.findById(decodedData._id)
+        
+         if (!user) {
+        return next(new ErrorHandler("You are not SignUp", 404));
+      }
+    
+        if (user.login === false) { 
+                  return next(new ErrorHandler("please login to access this page",401))
+
+          }
 
     
     next();
