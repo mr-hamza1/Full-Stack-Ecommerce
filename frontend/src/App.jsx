@@ -39,7 +39,7 @@ const App = () => {
       .then(({ data }) => dispatch(userExist(data.user)))
       .catch((err) => dispatch(userNotExist()));
 
-  }, [dispatch]);
+  }, [dispatch,user]);
 
 
   return (
