@@ -8,10 +8,9 @@ import { ErrorHandler } from "./errorHandler.js";
 
 const cookieOptions = {
   maxAge: 15 * 24 * 60 * 60 * 1000,
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  sameSite: "none",
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  domain: process.env.COOKIE_DOMAIN,
+  secure: true,
 };
 
 
